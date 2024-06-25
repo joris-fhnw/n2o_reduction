@@ -19,14 +19,14 @@ def gas_lmin(syngas):
 
 
 # Combust Properties
-p = 10e5  # [Pa]
+p = 5e5  # [Pa]
 T_0 = 1500  # [K] inlet temperature
 T_norm = 273  # [K]
 x0_n2o = 1000e-6  # N2O in Air  [mol/mol]
 
 lam = 2
 
-length = 1.5e-6  # *approximate* PFR length [m]
+length = 3e-6  # *approximate* PFR length [m]
 u_0 = .006  # inflow velocity [m/s]
 area = 1.e-4  # cross-sectional area [m**2]
 
@@ -80,14 +80,14 @@ plt.figure()
 plt.plot(z1, states1.T)
 plt.xlabel('$z$ [m]')
 plt.ylabel('$T$ [K]')
-plt.legend(loc=0)
+# plt.legend(loc=0)
 plt.show(block=True)
 
 
 plt.figure()
-plt.plot(t1, states1.X[:, gasmix.species_index('N2O')]*1e6, label='N2O')
-plt.plot(t1, states1.X[:, gasmix.species_index('NO')]*1e6, label='NO')
-plt.xlabel('$t$ [s]')
+plt.plot(t1*1e3, states1.X[:, gasmix.species_index('N2O')]*1e6, label='N2O')
+plt.plot(t1*1e3, states1.X[:, gasmix.species_index('NO')]*1e6, label='NO')
+plt.xlabel('$t$ [ms]')
 plt.ylabel('$X$ [ppm]')
 plt.legend(loc=0)
 plt.show(block=True)
